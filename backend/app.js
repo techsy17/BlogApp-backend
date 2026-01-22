@@ -18,9 +18,11 @@ app.use(
   })
 );
 
-app.get('/home',(req,res)=>{
-  res.send("Working ..");
-})
+app.get('/',(req,res)=>{
+  res.json({success: true,
+    message: "Backend Running.."
+  });
+});
 
 app.use(express.json())
 app.use('/api',userRoute);
