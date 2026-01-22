@@ -12,11 +12,20 @@ connectDB();
 
 const app = express();
 
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//   })
+// );
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173", 
+      "https://wondrous-boba-3865ea.netlify.app"
+    ]
   })
 );
+
 
 app.get('/api',(req,res)=>{
   res.json({success: true,
