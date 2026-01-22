@@ -1,22 +1,6 @@
-// import mongoose from "mongoose";
-
-// const connectDB = async () =>{
-//     try {
-
-//        await mongoose.connect(process.env.MONGODB_URL);
-//         console.log("Database connected Successfully..");
-
-//     } catch (error) {
-//         console.log(error.message);
-        
-//     }
-// }
-
-// export default connectDB;
-
 import mongoose from "mongoose";
 
-let isConnected = false; // track connection across invocations
+let isConnected = false; // cache connection
 
 const connectDB = async () => {
   if (isConnected) {
@@ -24,12 +8,18 @@ const connectDB = async () => {
     return;
   }
 
+  const mongoUri = process.env.MONGO_URI;
+  if (!mongoUri) {
+    throw new Error("MONGO_URI is not defined. Set it in Netlify environment variables.");
+  }
+
   try {
-    const db = await mongoose.connect(process.env.MONGO_URI, {
-      bufferCommands: false,         // avoid waiting for DB if not connected
-      connectTimeoutMS: 10000,       // timeout in 10 seconds
+    const db = await mongoose.connect(mongoUri, {
+      bufferCommands: false,
+      connectTimeoutMS: 10000,
       serverSelectionTimeoutMS: 10000,
     });
+
     isConnected = db.connections[0].readyState;
     console.log("Database connected Successfully..");
   } catch (error) {

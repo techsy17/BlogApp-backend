@@ -8,7 +8,7 @@ import paymentRoute from './routes/paymentRoute.js';
 import cors from 'cors';
 
 dotenv.config();
-connectDB();
+await connectDB();
 
 const app = express();
 
