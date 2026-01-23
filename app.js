@@ -6,7 +6,6 @@ import blogRoute from './routes/blogRoute.js';
 import subcriptionRoute from './routes/subscriptionRoute.js';
 import paymentRoute from './routes/paymentRoute.js';
 import cors from 'cors';
-import { register } from './controller/userController.js';
 
 dotenv.config();
 connectDB();
@@ -33,8 +32,6 @@ app.get('/api',(req,res)=>{
     message: "Backend Running.."
   });
 });
-
-app.post('/register',register);
 
 app.use(express.json())
 app.use('/api',userRoute);
