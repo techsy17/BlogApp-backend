@@ -26,6 +26,11 @@ app.use(
   })
 );
 
+app.get('/api',(req,res)=>{
+  res.json({success: true,
+    message: "Backend Running.."
+  });
+});
 
 app.get('/api',(req,res)=>{
   res.json({success: true,
