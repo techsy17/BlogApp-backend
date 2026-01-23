@@ -6,6 +6,7 @@ import blogRoute from './routes/blogRoute.js';
 import subcriptionRoute from './routes/subscriptionRoute.js';
 import paymentRoute from './routes/paymentRoute.js';
 import cors from 'cors';
+import { register } from './controller/userController.js';
 
 dotenv.config();
 connectDB();
@@ -26,17 +27,14 @@ app.use(
   })
 );
 
-app.get('/api',(req,res)=>{
-  res.json({success: true,
-    message: "Backend Running.."
-  });
-});
 
 app.get('/api',(req,res)=>{
   res.json({success: true,
     message: "Backend Running.."
   });
 });
+
+app.post('/register',register);
 
 app.use(express.json())
 app.use('/api',userRoute);
