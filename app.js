@@ -21,7 +21,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", 
-      "https://wondrous-boba-3865ea.netlify.app"
+      "https://willowy-monstera-403963.netlify.app"
     ]
   })
 );
