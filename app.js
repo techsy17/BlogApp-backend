@@ -17,11 +17,12 @@ const app = express();
 //     origin: "http://localhost:5173",
 //   })
 // );
+// "https://myblog-website17.netlify.app"
 app.use(
   cors({
     origin: [
       "http://localhost:5173", 
-      "https://myblog-website17.netlify.app"
+      "https://myblog-website017.netlify.app"
     ]
   })
 );
